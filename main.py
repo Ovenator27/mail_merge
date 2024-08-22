@@ -7,14 +7,15 @@
     #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
         #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
-with open("Input/Letters/starting_letter.txt") as data:
-    template = data.read()
+with open("Input/Letters/starting_letter.txt") as letter_file:
+    template = letter_file.read()
 
-with open("Input/Names/invited_names.txt") as data:
-    names = data.readlines()
+with open("Input/Names/invited_names.txt") as names_file:
+    names = names_file.readlines()
 
 for name in names:
-    with open(f"Output/ReadyToSend/{name.strip()}.txt", mode="w") as data:
-        data.write(f"{template.replace("[name]", name.strip())}")
+    stripped_name = name.strip()
+    with open(f"Output/ReadyToSend/{stripped_name}.txt", mode="w") as data:
+        data.write(f"{template.replace("[name]", stripped_name)}")
 
 
